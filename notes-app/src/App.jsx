@@ -1,17 +1,17 @@
 import { useState } from "react";
 import NotesForm from "./components/NotesForm";
 import NoteList from "./components/NoteList";
+import { useEffect } from "react";
 
 function App() {
-  const [notes, setNotes] = useState([
-    {
-      title: "sbdnf",
-      priority: "Medium",
-      category: "Work",
-      description: "segbd drgnghmj",
-      id: 1,
-    },
-  ]);
+  const [notes, setNotes] = useState(() => {
+    const storedNotes = JSON.parse(localStorage.getItem("notes"));
+    return storedNotes || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   const deleteNote = (id) => {
     const confirmDelete = window.confirm(
