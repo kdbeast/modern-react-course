@@ -2,7 +2,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Routes, Route } from "react-router";
 import HomePage from "./pages/home";
-const API_URL = import.meta.env.VITE_API_URL;
+import AboutPage from "./pages/about";
+import Header from "./components/Header";
+import NotFoundPage from "./pages/not-found";
+import CoinDetailsPage from "./pages/coin-details";
+const API_URL = import.meta.env.VITE_COINS_API_URL;
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -25,7 +29,6 @@ function App() {
         }
 
         const data = await res.json();
-        console.log("data", data);
         setCoins(data);
       } catch (err) {
         setError(err);
@@ -37,24 +40,30 @@ function App() {
   }, [limit]);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <HomePage
-            coins={coins}
-            filter={filter}
-            setFilter={setFilter}
-            limit={limit}
-            setLimit={setLimit}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-            loading={loading}
-            error={error}
-          />
-        }
-      />
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              coins={coins}
+              filter={filter}
+              setFilter={setFilter}
+              limit={limit}
+              setLimit={setLimit}
+              sortBy={sortBy}
+              setSortBy={setSortBy}
+              loading={loading}
+              error={error}
+            />
+          }
+        />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/coins/:id" element={<CoinDetailsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 
