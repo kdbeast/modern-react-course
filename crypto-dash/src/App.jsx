@@ -69,14 +69,14 @@ function App() {
     <div>
       <h1>🚀 Crypto-Dash</h1>
 
-      {loading && <p>Loading...</p>}
-      {error && <p className="error">Error: {error?.message}</p>}
-
       <div className="top-controls">
         <FilterInput filter={filter} onFilterChange={setFilter} />
         <SortSelector sort={sort} setSort={setSort} />
         <LimitSelector limit={limit} setLimit={setLimit} />
       </div>
+
+      {loading && <p>Loading...</p>}
+      {error && <p className="error">Error: {error?.message}</p>}
 
       {!loading && !error && (
         <main className="grid">
