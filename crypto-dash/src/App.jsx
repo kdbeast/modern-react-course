@@ -30,8 +30,13 @@ function App() {
 
         const data = await res.json();
         setCoins(data);
+        sessionStorage.setItem("coins", JSON.stringify(data));
       } catch (err) {
-        setError(err);
+        if (sessionStorage.getItem("coins")) {
+          setCoins(JSON.parse(sessionStorage.getItem("coins")));
+        } else {
+          setError(err);
+        }
       } finally {
         setLoading(false);
       }
