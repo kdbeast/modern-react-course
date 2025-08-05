@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Routes, Route } from "react-router";
 import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
-import Header from "./components/Header";
 import NotFoundPage from "./pages/not-found";
 import CoinDetailsPage from "./pages/coin-details";
 const API_URL = import.meta.env.VITE_COINS_API_URL;
@@ -46,7 +45,6 @@ function App() {
 
   return (
     <>
-      <Header />
       <Routes>
         <Route
           path="/"
