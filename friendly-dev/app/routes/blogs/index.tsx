@@ -2,7 +2,9 @@
 
 const BlogsPage = () => {
   return (
-    <section>BlogsPage</section>
+    <>
+      <h2 className="text-white font-bold text-2xl">Blog Page</h2>
+    </>
   )
 }
 
