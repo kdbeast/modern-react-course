@@ -45,9 +45,7 @@ export async function loader({
     documentId: project.documentId,
     title: project.title,
     description: project.description,
-    image: project.image?.url
-      ? `${import.meta.env.VITE_STRAPI_URL}${project.image.url}`
-      : "/images/no-image.png",
+    image: project.image?.url ? `${project.image.url}` : "/images/no-image.png",
     url: project.url,
     date: project.date,
     featured: project.featured,
@@ -60,9 +58,7 @@ export async function loader({
     slug: post.slug,
     excerpt: post.excerpt,
     body: post.body,
-    image: post.image?.url
-      ? `${import.meta.env.VITE_STRAPI_URL}${post.image.url}`
-      : "/images/no-image.png",
+    image: post.image?.url ? `${post.image.url}` : "/images/no-image.png",
     url: post.url,
     date: post.date,
   }));
