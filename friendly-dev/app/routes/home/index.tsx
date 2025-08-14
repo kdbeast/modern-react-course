@@ -20,7 +20,6 @@ export async function loader({
 
 const HomePage = ({ loaderData }: Route.ComponentProps) => {
   const { project } = loaderData;
-  console.log(project);
 
   return (
     <>
