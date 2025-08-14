@@ -5,7 +5,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/projects? `
+    `${import.meta.env.VITE_API_URL}/projects?filters[documentId][$eq]=${params.id}&populate=* `
   );
 
   if (!res.ok) {

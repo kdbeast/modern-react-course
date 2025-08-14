@@ -1,15 +1,15 @@
-import type { PostMeta } from "~/types";
+import type { Post } from "~/types";
 import PostCard from "./PostCard";
 import { Link } from "react-router";
 
 type LatestPostsProps = {
-  posts: PostMeta[];
+  posts: Post[];
   limit?: number;
 };
 
 const LatestPost = ({ posts, limit = 3 }: LatestPostsProps) => {
   const sorted = [...posts].sort(
-    (a: PostMeta, b: PostMeta) =>
+    (a: Post, b: Post) =>
       new Date(b.date).getTime() - new Date(a.date).getTime()
   );
   const latest = sorted.slice(0, limit);
@@ -21,6 +21,7 @@ const LatestPost = ({ posts, limit = 3 }: LatestPostsProps) => {
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {latest.map((post) => (
           <Link
+            key={post.id}
             to={`/blog/${post.slug}`}
             className="block p-4 border border-gray-700 rounded-lg bg-gray-800 hover:shadow-md transition "
           >
