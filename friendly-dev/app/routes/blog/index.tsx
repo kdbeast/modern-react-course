@@ -4,7 +4,6 @@ import PostCard from "~/components/PostCard";
 import { useState } from "react";
 import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
-import { filter } from "framer-motion/client";
 
 export async function loader({
   request,
